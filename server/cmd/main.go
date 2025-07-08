@@ -14,8 +14,7 @@ func main() {
 	router := gin.Default()
 
 	// Initialize database connection
-
-	conn, err := pgx.Connect(context.Background(), "postgresql://postgres:Ayushsoni2212@db.oywutyuuiuwxiscgpxuy.supabase.co:5432/postgres")
+	conn, err := pgx.Connect(context.Background(), "")
 
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Unable to connect to database: %v\n", err)
