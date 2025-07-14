@@ -37,7 +37,7 @@ func Load() (*Config, error) {
 			WriteTimeout: getDurationEnvWithDefault("WRITE_TIMEOUT", 10*time.Second),
 		},
 		Database: DatabaseConfig{
-			URI: os.Getenv("DATABASE_URI"),
+			URI: os.Getenv("DATABASE_URL"),
 		},
 	}
 

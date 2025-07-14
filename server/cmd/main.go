@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"github.com/SpectreFury/deezcode/server/internal/config"
+	"github.com/SpectreFury/deezcode/server/internal/handlers"
 	"github.com/gin-gonic/gin"
 )
 
@@ -20,6 +21,15 @@ func main() {
 		panic(err)
 	}
 
-	r := gin.Default()
+	// Initialize the Gin router
+	router := gin.Default()
 
+	// Initialize handlers
+	healthHandler := handlers.NewHealthHandler(config)
+
+	// Setup routes
+	router.GET("/health", healthHandler.Health)
+
+	// Listen and serve on the configured port
+	router.Run(":" + config.Server.Port)
 }
